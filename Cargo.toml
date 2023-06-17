@@ -1,0 +1,55 @@
+[package]
+name = "forro"
+version = "0.1.0"
+description = """
+An implementation of the Forró cipher.
+"""
+edition = "2021"
+license = "BSD-3-Clause"
+readme = "README.md"
+documentation = "https://docs.rs/forro"
+repository = "https://github.com/ericlagergren/forro"
+keywords = [ "forro", "stream-cipher", "aead" ]
+categories = [ "cryptography", "no-std" ]
+
+[features]
+default = [
+	"zeroize"
+]
+
+# Enable `std` support.
+#
+# This makes `Error` implement `std::core::Error`.
+std = []
+
+# Enable zeroize support.
+zeroize = [
+	"dep:zeroize",
+]
+
+#
+# Nightly features.
+#
+
+# Make `Error` implement `core::error::Error`.
+error_in_core = []
+
+[dependencies]
+byteorder = { version = "1", default-features = false }
+cfg-if = { version = "1" }
+poly1305 = { version = "0.8" }
+zeroize = { version = "1.6", default-features = false, features = ["derive"], optional = true }
+
+[dev-dependencies]
+hex = { version = "0.4" }
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docs"]
+
+[package.metadata.cargo-all-features]
+always_include_features = []
+
+denylist = [
+	"error_in_core",
+]
