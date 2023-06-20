@@ -311,10 +311,10 @@ impl<const R: usize> Forro<R> {
             State::new(&key_to_words(key), &[c[0], c[1]], &[c[2], c[3]]);
         ctx.rounds::<R>();
         let mut out = [0u8; 32];
-        LittleEndian::write_u32(&mut out[0..4], ctx[0]);
-        LittleEndian::write_u32(&mut out[4..8], ctx[1]);
-        LittleEndian::write_u32(&mut out[8..12], ctx[2]);
-        LittleEndian::write_u32(&mut out[12..16], ctx[3]);
+        LittleEndian::write_u32(&mut out[0..4], ctx[4]);
+        LittleEndian::write_u32(&mut out[4..8], ctx[5]);
+        LittleEndian::write_u32(&mut out[8..12], ctx[6]);
+        LittleEndian::write_u32(&mut out[12..16], ctx[7]);
         LittleEndian::write_u32(&mut out[16..20], ctx[12]);
         LittleEndian::write_u32(&mut out[20..24], ctx[13]);
         LittleEndian::write_u32(&mut out[24..28], ctx[14]);
